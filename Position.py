@@ -66,9 +66,7 @@ def GetPeosition(Cypto):
                 TrailDistance = float(price) - float(TrailStop)
                 LastStat = "RSI"
                 Trades.Add(CBID, Cypto, all_fills[0].get('price'), all_fills[0].get('size'), Breakeven, basePrice, TrailStop, TrailDistance, "RSI")
-                if First == False:
-                    Notif.Send("Brought at: " + all_fills[0].get('price'))
-                First = False
+                Notif.Send("Brought at: " + all_fills[0].get('price'))
                 Store.StoreInfo("///////////////////////////////////////////////")
                 Store.StoreInfo("Brought: " + all_fills[0].get('price'))
                 Store.StoreInfo("///////////////////////////////////////////////")
@@ -85,10 +83,7 @@ def GetPeosition(Cypto):
                         Store.StoreInfo(all_fills[0].get('order_id') + "\t " + Trades.Trades[trade]['Sell_Order_ID'])
                         Trades.Trades[trade]['Size'] = 0
                         Trades.Trades[trade]["Sell_Order"] = False
-                        First = True
-                        if First == False:
-                            Notif.Send("Sold at: " + all_fills[0].get('price'))
-                        First = False
+                        Notif.Send("Sold at: " + all_fills[0].get('price'))
                         Store.StoreInfo("///////////////////////////////////////////////")
                         Store.StoreInfo("Sold: " + all_fills[0].get('price'))
                         Store.StoreInfo("///////////////////////////////////////////////")

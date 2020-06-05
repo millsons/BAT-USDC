@@ -38,7 +38,7 @@ class myWebsocketClient(cbpro.WebsocketClient):
                   "\t@ {:.6f}".format(float(msg["price"])), "\t",
                   msg["time"])
             Spread = round(float(msg["best_ask"]) - float(msg["best_bid"]), 4)
-            Store.StoreInfo("Cur Price: " + msg["price"] + "Best Ask: " + msg["best_ask"] + " Best Bid: " + msg["best_bid"] + "  Spread: " + str(Spread))
+            Store.StoreInfo("Cur Price: " + msg["price"] + " Best Ask: " + msg["best_ask"] + " Best Bid: " + msg["best_bid"] + "  Spread: " + str(Spread))
             Direction.Direction(msg["price"], msg["product_id"])
             Position.GetPeosition(msg["product_id"])
             #Buying.Can_Buy(msg["price"], Spread)

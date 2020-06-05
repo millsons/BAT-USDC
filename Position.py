@@ -97,4 +97,5 @@ def GetPeosition(Cypto):
 
 
 for trade in Trades.Trades:
-    Store.StoreInfo(str(Trades.Trades[trade]))
+    if float(Trades.Trades[trade]["Size"]) > 0:
+     Store.StoreInfo(str(Trades.Trades[trade]))

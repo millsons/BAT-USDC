@@ -84,7 +84,9 @@ def Buy_Setup(curPrice, Cypto):
 
 
 def Check(curPrice, spread, Cypto):
-    #Store.StoreInfo("------------------------------BUYING LOG---------------------------------------")
+    Store.StoreInfo("------------------------------BUYING LOG---------------------------------------")
+    print("{:<15} {:<15} {:<15} {:<15} {:<15}".format("Canbuy", "Can-Order", "Brought", "can_Market", "ID"))
+    print("{:<15} {:<15} {:<15} {:<15} {:<15}".format(str(Settings.Cypto_Settings[Cypto]["canBuy"]), str(Settings.Cypto_Settings[Cypto]["BuyOrder"]), str(Settings.Cypto_Settings[Cypto]["Brought"]),str(Settings.Cypto_Settings[Cypto]["Can_Market"]),Settings.Cypto_Settings[Cypto]["ID"]))
     global CanBuy
     global SellOrder
     global LimitOrderTime
@@ -213,6 +215,9 @@ def Check(curPrice, spread, Cypto):
             if SellOrder and Settings.Cypto_Settings[Cypto]["Can_Market"]:
                 auth_client.cancel_order(OrderId)
                 Store.StoreInfo("removed Limit Order")
+                Settings.Cypto_Settings[Cypto]["BuyOrder"] = False
+                SellOrder = False
+                Settings.Cypto_Settings[Cypto]["ID"] = ""
 
             GBP = Get_Cypto(Cypto)
             Store.StoreInfo("Spening: £" + str(GBP))
@@ -233,6 +238,9 @@ def Check(curPrice, spread, Cypto):
             if SellOrder == True:
                 auth_client.cancel_order(OrderId)
                 Store.StoreInfo("removed Limit Order")
+                Settings.Cypto_Settings[Cypto]["BuyOrder"] = False
+                SellOrder = False
+                Settings.Cypto_Settings[Cypto]["ID"] = ""
 
             SellPrice = float(curPrice)
 

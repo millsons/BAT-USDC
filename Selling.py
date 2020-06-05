@@ -31,10 +31,11 @@ def RunAll(Curprice, Spread, Cypto):
     global LimitOrderTime
     LimitOrderTime = float(Cypto_Settings[Cypto]["LimitOrder"])
     RSI_Sell = Cypto_Settings[Cypto]["RSI_Sell"]
-    Store.StoreInfo("RIS_Sell = " + RSI_Sell)
+    Store.StoreInfo("RIS_Sell = " + str(RSI_Sell))
     i = 0
     Count = len(TradeList) - 1
-
+    print("{:<12} {:<20} {:<6} {:<40} {:<8}".format("Size", 'Breakeven',
+                                              'Sell_Order', 'Sell_Order_ID', 'Strat'))
     if(Count > 0):
         for trade in TradeList:
             if trade != "TradeTemp_" + Cypto and TradeList[trade]['Cypto'] == Cypto:
@@ -48,7 +49,8 @@ def RunAll(Curprice, Spread, Cypto):
                 SellOrderId = TradeList[trade]['Sell_Order_ID']
                 StopPercentageTL = TradeList[trade]['Sell_Percentage']
                 Strat = TradeList[trade]['Strat']
-                Store.StoreInfo(TradeList[trade])
+                if(float(Size) > 0):
+                    print ("{:<12} {:<20} {:<6} {:<40} {:<8}".format(TradeList[trade]['Size'], TradeList[trade]['Breakeven'], str(TradeList[trade]['Sell_Order']), TradeList[trade]['Sell_Order_ID'], TradeList[trade]['Strat']))
                 if float(Size) > 0 and Strat == "RSI" and RSI_Sell == True or float(Size) > 0 and Strat == "Follow":
                     Check(trade, Curprice, Spread, Size, Breakeven, basePrice, TrailStop, TrailDistance, SellOrder, SellOrderId, StopPercentageTL, Cypto)
 

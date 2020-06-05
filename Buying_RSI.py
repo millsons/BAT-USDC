@@ -85,8 +85,8 @@ def Buy_Setup(curPrice, Cypto):
 
 def Check(curPrice, spread, Cypto):
     Store.StoreInfo("------------------------------BUYING LOG---------------------------------------")
-    print("{:<15} {:<15} {:<15} {:<15} {:<15}".format("Canbuy", "Can-Order", "Brought", "can_Market", "ID"))
-    print("{:<15} {:<15} {:<15} {:<15} {:<15}".format(str(Settings.Cypto_Settings[Cypto]["canBuy"]), str(Settings.Cypto_Settings[Cypto]["BuyOrder"]), str(Settings.Cypto_Settings[Cypto]["Brought"]),str(Settings.Cypto_Settings[Cypto]["Can_Market"]),Settings.Cypto_Settings[Cypto]["ID"]))
+    Store.StoreInfo("{:<15} {:<15} {:<15} {:<15} {:<15}".format("Can_buy", "Buy_Order", "Brought", "can_Market", "ID"))
+    Store.StoreInfo("{:<15} {:<15} {:<15} {:<15} {:<15}".format(str(Settings.Cypto_Settings[Cypto]["canBuy"]), str(Settings.Cypto_Settings[Cypto]["BuyOrder"]), str(Settings.Cypto_Settings[Cypto]["Brought"]),str(Settings.Cypto_Settings[Cypto]["Can_Market"]),Settings.Cypto_Settings[Cypto]["ID"]))
     global CanBuy
     global SellOrder
     global LimitOrderTime

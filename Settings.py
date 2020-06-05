@@ -20,8 +20,6 @@ Pass = "xue75slzmbn"
 
 GBP_Account_ID = "d4d6a284-7ee4-45a4-9365-667a0efe4855"
 
-Base_Buy_Percentage = 10
-Base_Sell_Percentage = 10
 
 
 

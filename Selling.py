@@ -32,6 +32,7 @@ def RunAll(Curprice, Spread, Cypto):
     LimitOrderTime = float(Cypto_Settings[Cypto]["LimitOrder"])
     RSI_Sell = Cypto_Settings[Cypto]["RSI_Sell"]
     Store.StoreInfo("RIS_Sell = " + str(RSI_Sell))
+    Store.StoreInfo("Cancel? = " + str(Settings.Cypto_Settings[Cypto]["Cancel_Sell"]))
     i = 0
     Count = len(TradeList) - 1
     Store.StoreInfo("------------------------------Brought Log---------------------------------------")
@@ -59,13 +60,13 @@ def RunAll(Curprice, Spread, Cypto):
                     auth_client.cancel_order(OrderId)
                     TradeList[trade]['Sell_Order'] = False
                     TradeList[trade]['Sell_Order_ID'] = ""
-                    Settings.Cypto_Settings[Cypto]["Cancel_Sell"] = False
                     Settings.Save()
 
+    Settings.Cypto_Settings[Cypto]["Cancel_Sell"] = False
 
                 # This is the function of the trailing stop loss
 def Check(id, curPrice, Spread, Size, Breakeven, basePrice, TrailStop, TrailDistance, SellOrder, SellorderID, StopPercentage, Cypto):
-    Store.StoreInfo("------------------------------SELLING LOG" + str(TradeList[id]["id"]) + "---------------------------------------")
+    Store.StoreInfo(bg.magenta + "------------------------------SELLING LOG" + str(TradeList[id]["id"]) + "---------------------------------------" + bg.rs)
     Store.StoreInfo("Price: " + str(curPrice) + "\t Spread: " + str(Spread))
     Store.StoreInfo("Stop Percentage: " + str(StopPercentage))
     Store.StoreInfo("Base Price: " + str(basePrice))

@@ -1,5 +1,5 @@
 import requests
-import schedule as schedule
+
 
 import Settings
 

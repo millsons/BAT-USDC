@@ -140,7 +140,7 @@ def Check(curPrice, spread, Cypto):
             SellPrice = round(SellPrice, Settings.Cypto_Settings[Cypto]["Round"])
 
             BuySize = float(Get_Cypto(Cypto)) / float(SellPrice)
-            if BuySize > 1:
+            if BuySize != 0:
                 if Settings.Cypto_Settings[Cypto]["Round_Bool"] == True:
                     BuySize = int(BuySize)
                     Store.StoreInfo("inted")
@@ -245,12 +245,13 @@ def Check(curPrice, spread, Cypto):
             SellPrice = float(curPrice)
 
             BuySize = float(Get_Cypto(Cypto)) / float(SellPrice)
-            if BuySize > 1:
+            Store.StoreInfo("Buy Size: " + str(BuySize))
+            if BuySize != 0:
                 if Settings.Cypto_Settings[Cypto]["Round_Bool"] == True:
                     BuySize = int(BuySize)
                 else:
                     BuySize = round(float(BuySize), Settings.Cypto_Settings[Cypto]["Round"])
-                Store.StoreInfo("Buy Size: " + str(BuySize))
+
                 try:
                     Sell = auth_client.buy(price=SellPrice,
                                            size=BuySize,

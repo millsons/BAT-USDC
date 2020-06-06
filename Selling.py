@@ -51,8 +51,8 @@ def RunAll(Curprice, Spread, Cypto):
                 SellOrderId = TradeList[trade]['Sell_Order_ID']
                 StopPercentageTL = TradeList[trade]['Sell_Percentage']
                 Strat = TradeList[trade]['Strat']
-                if(float(Size) > 0):
-                    Store.StoreInfo ("{:<12} {:<20} {:<6} {:<40} {:<8}".format(TradeList[trade]['Size'], TradeList[trade]['Breakeven'], str(TradeList[trade]['Sell_Order']), TradeList[trade]['Sell_Order_ID'], TradeList[trade]['Strat']))
+                if float(Size) > 0:
+                    Store.StoreInfo ("{:<12} {:<20} {:<6} {:<40} {:<8}".format(str(TradeList[trade]['Size']), str(TradeList[trade]['Breakeven']), str(TradeList[trade]['Sell_Order']), str(TradeList[trade]['Sell_Order_ID']), str(TradeList[trade]['Strat'])))
                 if float(Size) > 0 and Strat == "RSI" and RSI_Sell == True or float(Size) > 0 and Strat == "Follow":
                     Check(trade, Curprice, Spread, Size, Breakeven, basePrice, TrailStop, TrailDistance, SellOrder, SellOrderId, StopPercentageTL, Cypto)
 
@@ -61,6 +61,7 @@ def RunAll(Curprice, Spread, Cypto):
                     TradeList[trade]['Sell_Order'] = False
                     TradeList[trade]['Sell_Order_ID'] = ""
                     Settings.Save()
+                    Trades.Save()
 
     Settings.Cypto_Settings[Cypto]["Cancel_Sell"] = False
 
